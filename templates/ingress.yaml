@@ -1,10 +1,10 @@
 apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:
-  name: {{.Value.Ingress.Name}}
+  name: {{.Values.Ingress.Name}}
 spec:
   tls:
-  - secretName: {{.Value.Ingress.Secret}}
+  - secretName: {{.Values.Ingress.Secret}}
   backend:
     serviceName: nodeport-service
     servicePort: 80

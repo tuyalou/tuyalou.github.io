@@ -1,28 +1,31 @@
 deployment:
-  DeploymentName: wordpress
-  imagerepository: wordpress
-  imagetag: 4.8-apache
-  DbHost: mysql
-  SecretName: mysql-pass
-  SecretNameKey: password
+  deploymentName: wordpress
+  image:
+    repository: wordpress
+  imageTag: 4.8-apache
+  dbHost: mysql
+  secretName: mysql-pass
+  secretNameKey: password
 
 service:
-  StatefulsetName: mysql
+  serviceName: mysql
 
-statefulset:
-  StatefulsetName: mysql
-  imagerepository:  mysql
-  imagetag: 5.6
-  SecretNameKey: password
+statefulSet:
+  #statefulSetName: mysql
+  imageRepository:  mysql
+  image:
+    repository: mysql
+    tag: 5.6
+  secretNameKey: password
 
 service:
-  servicename: nodeport-service
-  servicetype: NodePort
+  serviceName: nodeport-service
+  serviceType: NodePort
 
 secret:
-  secretname: mysql-pass
-  envsecret: MySecurePas55
+  secretName: mysql-pass
+  password: MySecurePas55
 
 ingress:
-  IngressName: tls-ingress
-  IngressSecret: ingress-tls-secret
+  ingressName: tls-ingress
+  ingressSecret: ingress-tls-secret
