@@ -1,0 +1,24 @@
+deploymentName: wordpress
+wordpress:
+  repository: wordpress
+  tag: 4.8-apache
+dbHost: mysql
+secretName: mysql-pass
+secretNameKey: password
+
+serviceName: mysql
+
+appName: mysql
+image:
+  repository: mysql
+  tag:  5.6
+secretName: mysql-pass
+secretNameKey: password
+
+nodePortName: nodeport-service
+nodePortType: nodeport
+
+secretName: mysql-pass
+
+ingressName: tls-ingress
+ingressSecret: ingress-tls-secret

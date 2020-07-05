@@ -3,9 +3,9 @@ kind: Service
 metadata:
   labels:
     app: wordpress
-  name: {{.Values.service.name}}
+  name: {{.Values.NodeportName}}
 spec:
-  type: {{.Values.service.type}}
+  type: {{.Values.NodeportType}}
   ports:
   - nodePort: 31920
     port: 80

@@ -1,19 +1,19 @@
 apiVersion: apps/v1
 kind: StatefulSet
 metadata:
-  name: {{.Values.Statefulset.Name}}
+  name: {{.Values.appName}}
   labels: 
-    app: wordpress
+    app: mysql
 spec:
   selector:
     matchLabels:
-      app: wordpress # has to match .spec.template.metadata.labels
+      app: mysql # has to match .spec.template.metadata.labels
   serviceName: "mysql"
   replicas: 1 # by default is 1
   template:
     metadata:
       labels:
-        app: wordpress # has to match .spec.selector.matchLabels
+        app: mysql # has to match .spec.selector.matchLabels
     spec:
       terminationGracePeriodSeconds: 10
       containers:
@@ -24,7 +24,7 @@ spec:
           valueFrom:
             secretKeyRef:
               name: {{.Values.SecretName}}
-              key: {{.Values.SecretNameKey}}
+              key: password
         ports:
         - containerPort: 3306
           name: database
@@ -39,7 +39,7 @@ spec:
   - metadata:
       name: data
       labels:
-        app: wordpress
+        app: mysql
     spec:
       accessModes:
         - ReadWriteOnce
